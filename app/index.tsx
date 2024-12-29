@@ -5,6 +5,8 @@ import BottomSheetComponent from "@/components/BottomSheet";
 import { useState } from "react";
 import ScrollViewPlainLayout from "@/components/ScrollViewPlainLayout";
 import CardsGrid from "@/components/Cards/CardsGrid";
+import { LoadingLabel } from "@/components/loadingLabel";
+import AnimatedPagination from "@/components/AnimatedPagination";
 
 export default function Index() {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,6 +36,8 @@ export default function Index() {
           height: "100%",
         }}
       >
+        <AnimatedPagination ></AnimatedPagination>
+        <LoadingLabel minutes={6}></LoadingLabel>
         <CardsGrid />
       </View>
     </ScrollViewPlainLayout>

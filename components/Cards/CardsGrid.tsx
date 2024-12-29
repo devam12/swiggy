@@ -9,45 +9,41 @@ const CardsGrid = () => {
     <View style={{ paddingTop: 20 }}>
       <RenewalBanner />
 
-      <View style={styles.grid}>
-        <ServiceCard
-          title="FOOD DELIVERY"
-          subtitle="GET READY TO PARTY"
-          offer="FLAT ₹175 OFF & FREE DEL"
-          image={require("../../assets/images/splash.png")}
-        />
+      <ServiceCard
+        title="FOOD DELIVERY"
+        subtitle="GET READY TO PARTY"
+        offer="FLAT ₹175 OFF & FREE DEL"
+        image={require("../../assets/images/food.png")}
+      />
 
-        <ServiceCard
-          title="INSTAMART"
-          subtitle="NEW YEAR CELEBRATIONS"
-          offer="EXTRA ₹100 OFF"
-          image={require("../../assets/images/splash.png")}
-          timer="6 MINS"
-        />
-      </View>
+      <ServiceCard
+        title="INSTAMART"
+        subtitle="NEW YEAR CELEBRATIONS"
+        offer="EXTRA ₹100 OFF"
+        image={require("../../assets/images/food.png")}
+        timer="6 MINS"
+      />
 
-      <View style={styles.grid}>
-        <ServiceCard
-          title="DINEOUT"
-          subtitle="YEAR END FIESTA"
-          offer="UP TO 50% OFF"
-          image={require("../../assets/images/splash.png")}
-        />
+      <ServiceCard
+        title="DINEOUT"
+        subtitle="YEAR END FIESTA"
+        offer="UP TO 50% OFF"
+        image={require("../../assets/images/food.png")}
+      />
 
-        <ServiceCard
-          title="GENIE"
-          subtitle="SEND PARCELS"
-          offer=""
-          image={require("../../assets/images/splash.png")}
-        />
-      </View>
+      <ServiceCard
+        title="GENIE"
+        subtitle="SEND PARCELS"
+        offer=""
+        image={require("../../assets/images/food.png")}
+      />
 
       <View style={styles.grid}>
         <ServiceCard
           title="SCENES"
           subtitle="NYE PARTIES"
           offer="NEW"
-          image={require("../../assets/images/splash.png")}
+          image={require("../../assets/images/food.png")}
         />
       </View>
 
