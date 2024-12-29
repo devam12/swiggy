@@ -3,33 +3,39 @@ import { RefreshControl, ScrollView, Text, View } from "react-native";
 import AnimatedPlaceholderSearchBar from "./../components/SearchBar";
 import BottomSheetComponent from "@/components/BottomSheet";
 import { useState } from "react";
+import ScrollViewPlainLayout from "@/components/ScrollViewPlainLayout";
+import CardsGrid from "@/components/Cards/CardsGrid";
 
 export default function Index() {
   const [isOpen, setIsOpen] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
   const onRefresh = () => {
-    setRefreshing(true);
-
-    setTimeout(() => {
-      setRefreshing(false);
-      setIsOpen(true);
-    }, 1500);
+    setIsOpen(true);
   };
 
   return (
-    <ScrollView
-      contentContainerStyle={{ flex: 1 }}
-      refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+    <ScrollViewPlainLayout
+      onRefresh={onRefresh}
+      title="Hello"
+      SubHeaderComponent={
+        <AnimatedPlaceholderSearchBar
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+        />
       }
+      keepSafe={true}
     >
-      <AnimatedPlaceholderSearchBar />
-      <Link href="/check">Check</Link>
-
-      <BottomSheetComponent isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
-        <Text>Awesome 🎉</Text>
-      </BottomSheetComponent>
-    </ScrollView>
+      <View
+        style={{
+          flex: 1,
+          flexDirection: "column",
+          height: "100%",
+        }}
+      >
+        <CardsGrid />
+      </View>
+    </ScrollViewPlainLayout>
   );
 }

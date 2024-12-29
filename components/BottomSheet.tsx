@@ -12,8 +12,8 @@ export interface BottomSheetProps {
   children: React.ReactNode;
   initialSnapIndex?: number;
   containerStyle?: ViewStyle;
-  isOpen: boolean; 
-  onDismiss?: () => void; 
+  isOpen: boolean;
+  onDismiss?: () => void;
 }
 
 const BottomSheetComponent = ({
@@ -76,6 +76,8 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 24,
     justifyContent: "center",
+    // flex:1
+    height: "100%",
   },
   contentContainer: {
     flex: 1,
