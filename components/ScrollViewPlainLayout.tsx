@@ -1,11 +1,7 @@
 import * as React from "react";
 import {
-  ActivityIndicator,
-  Dimensions,
   Platform,
   RefreshControl,
-  ScrollView,
-  View,
   StyleProp,
   ViewStyle,
   TextStyle,

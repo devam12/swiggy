@@ -7,7 +7,6 @@ import Animated, {
 } from "react-native-reanimated";
 
 const PaginationIndicator = ({ currentPage, totalPages }: any) => {
-  // Array to hold the animated width and height for each page
   const animatedSizes = Array.from({ length: totalPages }).map(() => ({
     width: useSharedValue(10),
     height: useSharedValue(10),
@@ -15,20 +14,16 @@ const PaginationIndicator = ({ currentPage, totalPages }: any) => {
   }));
 
   useEffect(() => {
-    // Loop through all pages and adjust the size of the dots based on the current page
     animatedSizes.forEach((dot, index) => {
       if (index === currentPage) {
-        // Current page gets larger
         dot.width.value = withTiming(45, { duration: 300 });
         dot.height.value = withTiming(30, { duration: 300 });
         dot.borderRadius.value = withTiming(25, { duration: 300 });
       } else if (Math.abs(index - currentPage) === 1) {
-        // Adjacent pages get a medium size
         dot.width.value = withTiming(15, { duration: 300 });
         dot.height.value = withTiming(15, { duration: 300 });
         dot.borderRadius.value = withTiming(50, { duration: 300 });
       } else {
-        // Other pages remain small
         dot.width.value = withTiming(10, { duration: 300 });
         dot.height.value = withTiming(10, { duration: 300 });
         dot.borderRadius.value = withTiming(50, { duration: 300 });
@@ -36,13 +31,12 @@ const PaginationIndicator = ({ currentPage, totalPages }: any) => {
     });
   }, [currentPage, animatedSizes]);
 
-  // Animated style for each dot
   const getDotStyle = (index: number) =>
     useAnimatedStyle(() => ({
       width: animatedSizes[index].width.value,
       height: animatedSizes[index].height.value,
       borderRadius: animatedSizes[index].borderRadius.value,
-      backgroundColor: index === currentPage ? "#000" : "#D3D3D3", // Active color vs inactive color
+      backgroundColor: index === currentPage ? "#000" : "#D3D3D3", 
       justifyContent: "center",
       alignItems: "center",
       marginHorizontal: 5,

@@ -47,9 +47,7 @@ export const StickyHeader: React.FC<StickyHeaderProps> = ({
     flexDirection: "row",
     paddingTop: keepSafe ? insets.top + 16 : 0,
     paddingBottom: 24,
-    // paddingHorizontal: 8,
-    backgroundColor:
-      Platform.OS === "ios" ? "transparent" : theme.colors.background,
+    backgroundColor: theme.colors.background,
     borderColor: "#000",
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 1 },
@@ -61,7 +59,7 @@ export const StickyHeader: React.FC<StickyHeaderProps> = ({
 
   return (
     <Animated.View style={containerStyle}>
-      <BlurView intensity={2000} style={blurViewStyle} >
+      <BlurView intensity={2000} style={blurViewStyle}>
         {SubHeaderComponent}
       </BlurView>
     </Animated.View>

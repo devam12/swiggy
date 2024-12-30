@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { View, FlatList, Text, StyleSheet, Dimensions } from "react-native";
+import { View, FlatList, StyleSheet, Dimensions, Image } from "react-native";
 import PaginationIndicator from "./PaginationIndicator";
 
 const { width } = Dimensions.get("window");
-
-const DATA = ["Slide 1", "Slide 2", "Slide 3", "Slide 4"];
+const DATA = ["", "", "", ""];
 const totalPages = DATA.length;
 
 const AnimatedPagination = () => {
@@ -27,7 +26,11 @@ const AnimatedPagination = () => {
         onScroll={onScroll}
         renderItem={({ item }) => (
           <View style={[styles.slide, { width }]}>
-            <Text style={styles.text}>{item}</Text>
+            <Image
+              source={require("../assets/images/food.png")}
+              style={styles.image}
+              resizeMode="cover"
+            />
           </View>
         )}
       />
@@ -42,12 +45,19 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     justifyContent: "center",
     alignItems: "center",
+    marginBottom: 50,
+  },
+  image: {
+    borderRadius: 5,
+    height: "100%",
+    width: "100%",
   },
   slide: {
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#f0f0f0",
-    height: 250, // Adjust height as needed
+    height: 250,
+    marginBottom: 10,
   },
   text: {
     fontSize: 24,
