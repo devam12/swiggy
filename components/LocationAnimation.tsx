@@ -10,20 +10,18 @@ export const LocationAnimation = () => {
   const outCircleScale = new Animated.Value(1);
 
   useEffect(() => {
-    Animated.loop(
-      Animated.parallel([
-        Animated.timing(circleScale, {
-          toValue: 0,
-          duration: 1000,
-          useNativeDriver: true,
-        }),
-        Animated.timing(outCircleScale, {
-          toValue: 0,
-          duration: 1000,
-          useNativeDriver: true,
-        }),
-      ])
-    ).start();
+    Animated.parallel([
+      Animated.timing(circleScale, {
+        toValue: 0,
+        duration: 1000,
+        useNativeDriver: true,
+      }),
+      Animated.timing(outCircleScale, {
+        toValue: 0,
+        duration: 1000,
+        useNativeDriver: true,
+      }),
+    ]).start();
   }, []);
 
   return (
