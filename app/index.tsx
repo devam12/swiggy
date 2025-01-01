@@ -1,80 +1,113 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import AnimatedPlaceholderSearchBar from "./../components/SearchBar";
-import BottomSheetComponent from "@/components/BottomSheet";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Image,
+  Animated,
+} from "react-native";
+import AnimatedPlaceholderSearchBar from "../components/SearchBar";
 import ScrollViewPlainLayout from "@/components/ScrollViewPlainLayout";
 import CardsGrid from "@/components/Cards/CardsGrid";
 import AnimatedPagination from "@/components/AnimatedPagination";
+import BottomSheetComponent from "@/components/BottomSheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import AntDesign from "@expo/vector-icons/AntDesign";
-
+import { SplashScreen } from "expo-router";
 
 export default function Index() {
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
-  const onRefresh = () => {
-    setIsOpen(true);
-  };
+  const onRefresh = () => setIsOpen(true);
+
+  const [isSplashVisible, setIsSplashVisible] = useState(true);
+  const [showComponent, setShowComponent] = useState(false);
+  const slideAnimation = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    const prepareApp = async () => {
+      try {
+        setShowComponent(true);
+        Animated.timing(slideAnimation, {
+          toValue: 1,
+          duration: 1500,
+          useNativeDriver: true,
+        }).start(() => {
+          setIsSplashVisible(false); 
+        });
+      } catch (error) {
+        console.error("Error during splash screen animation:", error);
+      }
+    };
+
+    prepareApp();
+  }, [slideAnimation]);
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <BottomSheetModalProvider>
-        <ScrollViewPlainLayout
-          onRefresh={onRefresh}
-          title="Hello"
-          SubHeaderComponent={
-            <AnimatedPlaceholderSearchBar
-              inputValue={inputValue}
-              setInputValue={setInputValue}
-            />
-          }
-          keepSafe={true}
+        <Animated.View
+          style={[
+            styles.animatedView,
+            {
+              transform: [
+                {
+                  translateY: slideAnimation.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [0, -1000], // Slide-up animation
+                  }),
+                },
+              ],
+            },
+          ]}
         >
-          <CardsGrid />
-          <AnimatedPagination></AnimatedPagination>
-          <BottomSheetComponent
-            isOpen={isOpen}
-            initialSnapIndex={2}
-            onDismiss={() => {
-              setIsOpen(false);
-            }}
-          >
-            <Image
-              source={require("../assets/images/food.png")}
-              style={styles.image}
-              resizeMode="cover"
-            />
-
-            <TouchableOpacity
-              onPress={() => setIsOpen(false)}
-              style={styles.closeIconBottomSheet}
-            >
-              <AntDesign
-                name="closecircle"
-                size={36}
-                color="white"
-                // style={styles.closeIconBottomSheet}
-                onPress={() => setIsOpen(false)}
+          <Image
+            source={require("../assets/images/SplashScreen.png")}
+            style={styles.splashImage}
+            resizeMode="cover"
+          />
+        </Animated.View>
+        {showComponent && (
+          <ScrollViewPlainLayout
+            onRefresh={onRefresh}
+            title="Hello"
+            SubHeaderComponent={
+              <AnimatedPlaceholderSearchBar
+                inputValue={inputValue}
+                setInputValue={setInputValue}
               />
-            </TouchableOpacity>
-          </BottomSheetComponent>
-        </ScrollViewPlainLayout>
+            }
+            keepSafe={true}
+          >
+            <CardsGrid />
+            <AnimatedPagination />
+            <BottomSheetComponent
+              isOpen={isOpen}
+              initialSnapIndex={2}
+              onDismiss={() => setIsOpen(false)}
+            >
+              <Image
+                source={require("../assets/images/food.png")}
+                style={styles.image}
+                resizeMode="cover"
+              />
+              <TouchableOpacity
+                onPress={() => setIsOpen(false)}
+                style={styles.closeIconBottomSheet}
+              >
+                <AntDesign name="closecircle" size={36} color="white" />
+              </TouchableOpacity>
+            </BottomSheetComponent>
+          </ScrollViewPlainLayout>
+        )}
       </BottomSheetModalProvider>
     </GestureHandlerRootView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 50,
-  },
-  contentContainer: {
-    alignItems: "center",
-    justifyContent: "center",
-  },
   image: {
     borderRadius: 5,
     height: "100%",
@@ -86,5 +119,22 @@ const styles = StyleSheet.create({
     right: 20,
     zIndex: 1,
     top: 25,
+  },
+
+  splashContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1,
+  },
+  animatedView: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    zIndex: 1,
+  },
+  splashImage: {
+    width: "100%",
+    height: "100%",
   },
 });

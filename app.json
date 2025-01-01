@@ -4,16 +4,14 @@
     "slug": "swiggy",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/splash.png",
+    // "icon": "./assets/images/splash.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "cover"
+      "image": "./assets/images/SplashScreen.png",
+      "resizeMode": "contain"
     },
     "ios": {
       "supportsTablet": true,
@@ -37,12 +35,12 @@
         "expo-splash-screen",
         {
           "backgroundColor": "#232323",
-          "image": "./assets/splash-icon.png",
+          "image": "./assets/images/SplashScreen.png",
           "dark": {
             "image": "./assets/splash-icon-dark.png",
             "backgroundColor": "#000000"
           },
-          "enableFullScreenImage_legacy":true,
+          "enableFullScreenImage_legacy": true,
           "imageWidth": 200
         }
       ]
