@@ -35,7 +35,7 @@ export default function Index() {
           duration: 1000,
           useNativeDriver: true,
         }).start(() => {
-          setIsSplashVisible(false); 
+          setIsSplashVisible(false);
         });
       } catch (error) {
         console.error("Error during splash screen animation:", error);
@@ -56,7 +56,7 @@ export default function Index() {
                 {
                   translateY: slideAnimation.interpolate({
                     inputRange: [0, 1],
-                    outputRange: [0, -1000], // Slide-up animation
+                    outputRange: [0, -1000],
                   }),
                 },
               ],

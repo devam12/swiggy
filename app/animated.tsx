@@ -12,12 +12,12 @@ const AnimatedComponennt = () => {
   useEffect(() => {
     Animated.parallel([
       Animated.timing(opacity, {
-        toValue: 0,
+        toValue: 0.5,
         duration: 2000,
         useNativeDriver: true,
       }),
       Animated.timing(scale, {
-        toValue: 0.2,
+        toValue: 0.1,
         duration: 2000,
         useNativeDriver: true,
       }),
@@ -39,15 +39,17 @@ const AnimatedComponennt = () => {
             transform: [{ scale }, { translateY }],
             width: diameter,
             height: diameter,
-            borderRadius: diameter / 2, // Perfect circle
+            borderRadius: diameter / 2,
           },
         ]}
       >
         <Image
-          source={require("../assets/images/food.png")}
+          source={require("../assets/images/EntryImage.png")}
           style={styles.image}
         />
       </Animated.View>
+
+      
     </View>
   );
 };

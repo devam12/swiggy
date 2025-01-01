@@ -3,7 +3,6 @@ import { router } from "expo-router";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
 export const RenewalBanner = () => {
-  
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
@@ -14,7 +13,7 @@ export const RenewalBanner = () => {
       </View>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => router.push("/animated")}
+        onPress={() => router.push("./animated")}
       >
         <Text style={styles.buttonText}>Renew</Text>
       </TouchableOpacity>
