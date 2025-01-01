@@ -32,7 +32,7 @@ export default function Index() {
         setShowComponent(true);
         Animated.timing(slideAnimation, {
           toValue: 1,
-          duration: 1500,
+          duration: 1000,
           useNativeDriver: true,
         }).start(() => {
           setIsSplashVisible(false); 
