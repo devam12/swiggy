@@ -4,7 +4,7 @@ import { Animated, StyleSheet, View, Image, Dimensions } from "react-native";
 const { width, height } = Dimensions.get("window");
 const diameter = Math.min(width, height);
 
-const AnimatedComponennt = () => {
+const CircleAnimation = () => {
   const opacity = useRef(new Animated.Value(1)).current;
   const scale = useRef(new Animated.Value(1)).current;
   const translateY = useRef(new Animated.Value(0)).current;
@@ -17,7 +17,7 @@ const AnimatedComponennt = () => {
         useNativeDriver: true,
       }),
       Animated.timing(scale, {
-        toValue: 0.1,
+        toValue: 0.3,
         duration: 1000,
         useNativeDriver: true,
       }),
@@ -69,4 +69,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AnimatedComponennt;
+export default CircleAnimation;

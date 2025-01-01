@@ -13,7 +13,7 @@ export const RenewalBanner = () => {
       </View>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => router.push("./animated")}
+        onPress={() => router.push("./merge")}
       >
         <Text style={styles.buttonText}>Renew</Text>
       </TouchableOpacity>
