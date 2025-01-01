@@ -10,21 +10,20 @@ export const LocationAnimation = () => {
   const outCircleScale = new Animated.Value(1);
 
   useEffect(() => {
-    // Animated.loop(
-    Animated.parallel([
-      Animated.timing(circleScale, {
-        toValue: 0,
-        duration: 1000,
-        useNativeDriver: true,
-      }),
-
-      Animated.timing(outCircleScale, {
-        toValue: 0,
-        duration: 1000,
-        useNativeDriver: true,
-      }),
-    ]).start();
-    // ).start();
+    Animated.loop(
+      Animated.parallel([
+        Animated.timing(circleScale, {
+          toValue: 0,
+          duration: 1000,
+          useNativeDriver: true,
+        }),
+        Animated.timing(outCircleScale, {
+          toValue: 0,
+          duration: 1000,
+          useNativeDriver: true,
+        }),
+      ])
+    ).start();
   }, []);
 
   return (
@@ -39,10 +38,14 @@ export const LocationAnimation = () => {
           >
             <Animated.View
               style={[styles.circle, { transform: [{ scale: circleScale }] }]}
-            >
-              <MaterialIcons name="location-pin" size={32} color="black" />
-            </Animated.View>
+            ></Animated.View>
           </Animated.View>
+          <MaterialIcons
+            name="location-pin"
+            size={32}
+            color="black"
+            style={{ position: "absolute", zIndex: 2, top: 60, right: 75 }}
+          />
         </View>
 
         <View style={styles.textContainer}>
@@ -88,7 +91,6 @@ const styles = StyleSheet.create({
     height: 180,
     borderRadius: 100,
     backgroundColor: "#E8E8E8",
-    // backgroundColor: "trasperent",
     justifyContent: "center",
     alignItems: "center",
     zIndex: 1,

@@ -17,7 +17,7 @@ const CircleAnimation = () => {
         useNativeDriver: true,
       }),
       Animated.timing(scale, {
-        toValue: 0.3,
+        toValue: 0.0,
         duration: 1000,
         useNativeDriver: true,
       }),
