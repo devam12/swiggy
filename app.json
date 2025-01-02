@@ -4,14 +4,14 @@
     "slug": "swiggy",
     "version": "1.0.0",
     "orientation": "portrait",
-    // "icon": "./assets/images/splash.png",
+    // "icon": "./assets/images/EntryImage.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "assetBundlePatterns": ["**/*"],
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/images/SplashScreen.png",
-      "resizeMode": "contain"
+      "image": "./assets/images/EntryImage.png",
+      "resizeMode": "cover"
     },
     "ios": {
       "supportsTablet": true,
@@ -19,7 +19,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/splash.png",
+        "foregroundImage": "./assets/images/EntryImage.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.devam12.swiggy"
@@ -35,7 +35,7 @@
         "expo-splash-screen",
         {
           "backgroundColor": "#232323",
-          "image": "./assets/images/SplashScreen.png",
+          "image": "./assets/images/EntryImage.png",
           "dark": {
             "image": "./assets/splash-icon-dark.png",
             "backgroundColor": "#000000"
