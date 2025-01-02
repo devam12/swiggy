@@ -14,7 +14,7 @@ import BottomSheetComponent from "@/components/BottomSheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import { SplashScreen } from "expo-router";
+import CombinedAnimation from "@/components/CombinedAnimation";
 
 export default function Index() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,13 +30,13 @@ export default function Index() {
     const prepareApp = async () => {
       try {
         setShowComponent(true);
-        Animated.timing(slideAnimation, {
-          toValue: 1,
-          duration: 1500,
-          useNativeDriver: true,
-        }).start(() => {
-          setIsSplashVisible(false);
-        });
+        await setTimeout(() => {
+          Animated.timing(slideAnimation, {
+            toValue: 1,
+            duration: 1000,
+            useNativeDriver: true,
+          }).start();
+        }, 2000);
       } catch (error) {
         console.error("Error during splash screen animation:", error);
       }
@@ -63,11 +63,9 @@ export default function Index() {
             },
           ]}
         >
-          <Image
-            source={require("../assets/images/SplashScreen.png")}
-            style={styles.splashImage}
-            resizeMode="cover"
-          />
+          <CombinedAnimation
+            onComplete={() => setIsSplashVisible(false)}
+          ></CombinedAnimation>
         </Animated.View>
         {showComponent && (
           <ScrollViewPlainLayout

@@ -13,7 +13,7 @@ import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 const { width, height } = Dimensions.get("window");
 const diameter = Math.min(width, height);
 
-const CombinedAnimation = () => {
+const CombinedAnimation = ({ onComplete }: any) => {
   const [showFirstAnimation, setShowFirstAnimation] = useState(true);
 
   const circleOpacity = useRef(new Animated.Value(1)).current;
@@ -54,7 +54,9 @@ const CombinedAnimation = () => {
           duration: 1000,
           useNativeDriver: true,
         }),
-      ]).start();
+      ]).start(() => {
+        onComplete();
+      });
     }
   }, [showFirstAnimation]);
 
