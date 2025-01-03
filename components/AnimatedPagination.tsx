@@ -42,10 +42,11 @@ const AnimatedPagination = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     justifyContent: "center",
     alignItems: "center",
     marginTop: 20,
+    marginBottom: 20,
+    paddingBottom: 10,
   },
   image: {
     borderRadius: 5,
