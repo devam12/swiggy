@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 50,
+    marginTop: 20,
   },
   image: {
     borderRadius: 5,

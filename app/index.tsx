@@ -97,8 +97,8 @@ export default function Index() {
             keepSafe={true}
           >
             <CardsGrid />
-            <OffersGrid />
             <AnimatedPagination />
+            <OffersGrid />
             <BottomSheetView
               isOpen={isOpen}
               setIsOpen={setIsOpen}

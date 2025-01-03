@@ -6,6 +6,7 @@ import {
   Text,
   Image,
   Dimensions,
+  ImageBackground,
 } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
@@ -62,6 +63,11 @@ const CombinedAnimation = ({ onComplete }: any) => {
 
   return (
     <View style={styles.container}>
+      {/* <ImageBackground
+        source={require("../assets/images/map.png")}
+        style={styles.backgroundImage}
+        imageStyle={styles.backgroundImageOpacity}
+      > */}
       {showFirstAnimation ? (
         // CircleAnimation
         <Animated.View
@@ -85,7 +91,6 @@ const CombinedAnimation = ({ onComplete }: any) => {
           />
         </Animated.View>
       ) : (
-        // LocationAnimation
         <View style={styles.locationContent}>
           <View style={styles.iconContainer}>
             <Animated.View
@@ -101,6 +106,7 @@ const CombinedAnimation = ({ onComplete }: any) => {
                 ]}
               ></Animated.View>
             </Animated.View>
+
             <MaterialIcons
               name="location-pin"
               size={32}
@@ -121,6 +127,7 @@ const CombinedAnimation = ({ onComplete }: any) => {
           </View>
         </View>
       )}
+      {/* </ImageBackground> */}
     </View>
   );
 };
@@ -132,6 +139,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
   },
+  // backgroundImage: {
+  // flex: 1,
+  // width: "100%",
+  // height: "100%",
+  // justifyContent: "center",
+  // alignItems: "center",
+  // borderRadius: "50%",
+  // },
+  // backgroundImageOpacity: {
+  //   opacity: 0.7,
+  // },
   circleWrapper: {
     position: "absolute",
     overflow: "hidden",

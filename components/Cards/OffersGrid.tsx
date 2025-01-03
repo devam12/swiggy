@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { OfferCard } from "./OfferCard";
 
 const offerData = [
@@ -15,7 +15,7 @@ const offerData = [
     title: "Fresh Meals",
     subtitle: "HEALTHY & DELICIOUS",
     offer: "50% OFF ON FIRST ORDER",
-    image: "../../assets//images/background-food.png", // Replace with your image URL
+    image: "../../assets//images/background-food.png",
   },
   {
     id: "3",
@@ -35,7 +35,6 @@ const offerData = [
 
 export function OffersGrid() {
   return (
-    // <ScrollView style={styles.container}>
     <View style={styles.grid}>
       {offerData.map((offer) => (
         <View key={offer.id} style={styles.cardWrapper}>
@@ -48,7 +47,6 @@ export function OffersGrid() {
         </View>
       ))}
     </View>
-    // </ScrollView>
   );
 }
 
