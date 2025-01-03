@@ -11,10 +11,7 @@ export const RenewalBanner = () => {
           You've saved ₹1,351 with current plan. Renew now & keep saving
         </Text>
       </View>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => router.push("./labelRound")}
-      >
+      <TouchableOpacity style={styles.button} onPress={() => {}}>
         <Text style={styles.buttonText}>Renew</Text>
       </TouchableOpacity>
     </View>

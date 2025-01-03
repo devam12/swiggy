@@ -1,12 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  StyleSheet,
-  TouchableOpacity,
-  View,
-  Image,
-  Animated,
-  Text,
-} from "react-native";
+import { StyleSheet, TouchableOpacity, Image, Animated } from "react-native";
 import AnimatedPlaceholderSearchBar from "../components/SearchBar";
 import ScrollViewPlainLayout from "@/components/ScrollViewPlainLayout";
 import CardsGrid from "@/components/Cards/CardsGrid";
@@ -17,8 +10,28 @@ import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import CombinedAnimation from "@/components/CombinedAnimation";
 import { OffersGrid } from "@/components/Cards/OffersGrid";
-import AnimatedBorderLabel from "@/components/AnimatedBorderLabel";
-import LabelAnimation from "@/components/LabelAnimation";
+
+const BottomSheetView = ({ isOpen, setIsOpen }: any) => {
+  return (
+    <BottomSheetComponent
+      isOpen={isOpen}
+      initialSnapIndex={2}
+      onDismiss={() => setIsOpen(false)}
+    >
+      <Image
+        source={require("../assets/images/food.png")}
+        style={styles.image}
+        resizeMode="cover"
+      />
+      <TouchableOpacity
+        onPress={() => setIsOpen(false)}
+        style={styles.closeIconBottomSheet}
+      >
+        <AntDesign name="closecircle" size={36} color="white" />
+      </TouchableOpacity>
+    </BottomSheetComponent>
+  );
+};
 
 export default function Index() {
   const [isOpen, setIsOpen] = useState(false);
@@ -83,27 +96,13 @@ export default function Index() {
             }
             keepSafe={true}
           >
-            <LabelAnimation />
             <CardsGrid />
             <OffersGrid />
             <AnimatedPagination />
-            <BottomSheetComponent
+            <BottomSheetView
               isOpen={isOpen}
-              initialSnapIndex={2}
-              onDismiss={() => setIsOpen(false)}
-            >
-              <Image
-                source={require("../assets/images/food.png")}
-                style={styles.image}
-                resizeMode="cover"
-              />
-              <TouchableOpacity
-                onPress={() => setIsOpen(false)}
-                style={styles.closeIconBottomSheet}
-              >
-                <AntDesign name="closecircle" size={36} color="white" />
-              </TouchableOpacity>
-            </BottomSheetComponent>
+              setIsOpen={setIsOpen}
+            ></BottomSheetView>
           </ScrollViewPlainLayout>
         )}
       </BottomSheetModalProvider>

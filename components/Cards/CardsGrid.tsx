@@ -6,8 +6,9 @@ import { CreditCardBanner } from "./CreditCardBanner";
 
 const CardsGrid = () => {
   return (
-    <View style={{ paddingTop: 20 }}>
+    <View style={{}}>
       <RenewalBanner />
+      <CreditCardBanner />
 
       <ServiceCard
         title="FOOD DELIVERY"
@@ -46,8 +47,6 @@ const CardsGrid = () => {
           image={require("../../assets/images/food.png")}
         />
       </View>
-
-      <CreditCardBanner />
     </View>
   );
 };

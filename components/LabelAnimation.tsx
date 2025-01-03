@@ -6,44 +6,30 @@ import AnimatedBorderLabel from "@/components/AnimatedBorderLabel";
 export default function LabelAnimation() {
   const [animationVisible, setAnimationVisible] = useState(false);
 
-  // Delay the animation load by 1 second
   useEffect(() => {
     const timer = setTimeout(() => {
-      setAnimationVisible(true); 
+      setAnimationVisible(true);
     }, 1000);
 
-    return () => clearTimeout(timer); 
+    return () => clearTimeout(timer);
   }, []);
 
   const styles = dynamicStyles(130, 50);
 
   return (
-    <View
-      style={{
-        marginTop: 16,
-        marginHorizontal: 16,
-        alignItems: "center",
-        flex: 1,
-        flexDirection: "row",
-      }}
-    >
-      <Text style={{ textAlign: "right", fontWeight: "500", fontSize: 20 }}>
-        Minutes to Left order:{" "}
-      </Text>
-      <View style={styles.container}>
-        <View style={styles.labelContainer}>
-          {animationVisible && (
-            <Lottie
-              source={require("../assets/json/animation.json")}
-              autoPlay
-              onAnimationFinish={() => setAnimationVisible(false)}
-              speed={0.5}
-              loop={false}
-              style={styles.lottie}
-            />
-          )}
-          <AnimatedBorderLabel minutes={6} showBolt={true} />
-        </View>
+    <View style={styles.container}>
+      <View style={styles.labelContainer}>
+        {animationVisible && (
+          <Lottie
+            source={require("../assets/json/animation.json")}
+            autoPlay
+            onAnimationFinish={() => setAnimationVisible(false)}
+            speed={0.5}
+            loop={false}
+            style={styles.lottie}
+          />
+        )}
+        <AnimatedBorderLabel minutes={6} showBolt={true} />
       </View>
     </View>
   );
@@ -61,7 +47,8 @@ const dynamicStyles = (width: number, height: number) =>
       height: height - 16,
       justifyContent: "center",
       alignItems: "center",
-      backgroundColor: "transparent",
+      backgroundColor: "white",
+      borderRadius: 20,
     },
     lottie: {
       width: width,
