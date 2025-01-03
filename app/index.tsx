@@ -5,6 +5,7 @@ import {
   View,
   Image,
   Animated,
+  Text,
 } from "react-native";
 import AnimatedPlaceholderSearchBar from "../components/SearchBar";
 import ScrollViewPlainLayout from "@/components/ScrollViewPlainLayout";
@@ -15,6 +16,9 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import CombinedAnimation from "@/components/CombinedAnimation";
+import { OffersGrid } from "@/components/Cards/OffersGrid";
+import AnimatedBorderLabel from "@/components/AnimatedBorderLabel";
+import LabelAnimation from "@/components/LabelAnimation";
 
 export default function Index() {
   const [isOpen, setIsOpen] = useState(false);
@@ -79,7 +83,9 @@ export default function Index() {
             }
             keepSafe={true}
           >
+            <LabelAnimation />
             <CardsGrid />
+            <OffersGrid />
             <AnimatedPagination />
             <BottomSheetComponent
               isOpen={isOpen}

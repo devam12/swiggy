@@ -21,6 +21,7 @@ export default function RootLayout() {
     <Stack initialRouteName="index">
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen name="merge" options={{ headerShown: false }} />
+      <Stack.Screen name="labelRound" options={{ headerShown: false }} />
     </Stack>
   );
 }
